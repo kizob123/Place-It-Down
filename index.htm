@@ -1,0 +1,401 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Place It Down</title>
+        
+        <style type="text/css">
+           .health{
+color:red;
+background:black
+}
+.tilth{
+	color:blue;
+	background: red;
+}
+.lightup{
+	color:green;
+background:yellow}
+.box{
+	height:150px;
+	width:150px;
+	
+	border: 0px solid black;
+}
+.boxt{
+	height:150px;
+	width:150px;
+	
+	border: 2px solid black;
+}
+.box1{
+	height:30px;
+	width:30px;
+	
+	border: 0px solid black;
+}
+.chose{
+	
+	height:150px;
+	width:150px;
+	
+	border: 6px solid #220033;
+}
+        </style>
+        </head>
+    <body >
+	<h1 id ="gotit"></h1>
+	<span id ="directionslab" hidden>Directions Followed:</span><input id = "directions" type ="text" name ="directions" value ="output" size="40" hidden readonly>
+	<br><span id ="dtimelab" hidden>Time Taken:</span><input id ="thetime" type ="text" name ="directions" value ="output" hidden readonly>
+	
+        <div id="1" class="box"  onclick = "switcheroo(this)" style="background:black"></div>
+		<div id="2" class="box"  onclick = "switcheroo(this)" style="background:cyan;top:-150px; left:150px; position:relative"></div>
+		<div id="3" class="box"  onclick = "switcheroo(this)" style="background:blue;top:-300px; left:300px; position:relative"></div>
+		<div id="4" class="box"  onclick = "switcheroo(this)" style="background:green;top:-300px; position:relative"></div>
+        <div id="5" class="box"  onclick = "switcheroo(this)" style="background:violet;top:-450px; left:150px; position:relative"></div>
+		<div id="6" class="box"  onclick = "switcheroo(this)" style="background:pink;top:-600px; left:300px; position:relative"></div>
+		<div id="7" class="box"  onclick = "switcheroo(this)" style="background:brown;top:-600px; position:relative"></div>
+		<div id="8" class="box" onclick = "switcheroo(this)" style="background:gray;top:-750px; left:150px; position:relative"></div>
+		<div id="9" class="box"  onclick = "switcheroo(this)" style="background:orange;top:-900px; left:300px; position:relative"></div>
+      
+	   <div id="11x"  class="box1"   style="top:-1000px; left:650px; position:relative"></div>
+		<div id="21x"  class="box1"  style="top:-1030px; left:680px; position:relative"></div>
+		<div id="31x"  class="box1"  style="top:-1060px; left:710px; position:relative"></div>
+		<div id="41x"  class="box1"  style="top:-1060px; left:650px;position:relative"></div>
+        <div id="51x"  class="box1"  style="top:-1090px; left:680px; position:relative"></div>
+		<div id="61x"  class="box1"  style="top:-1120px; left:710px; position:relative"></div>
+		<div id="71x"  class="box1"  style="top:-1120px; left:650px;position:relative"></div>
+		<div id="81x" class="box1"  style="top:-1150px; left:680px; position:relative"></div>
+		<div id="91x"  class="box1"  style="top:-1180px; left:710px; position:relative"></div>
+		
+       
+
+	   <div id="takeDirect" hidden></div>
+	   <div id="takeTime"  hidden ></div>
+	   
+		
+           <script type="text/javascript">
+               let before = new Date();
+		var colors = ["black", "cyan","blue","green","violet","pink","brown","gray","orange"];
+		//var num = [[3,4,1,8,9,2,5,7,6],[5,3,7,9,1,2,6,8,4],[3,2,6,7,9,4,1,5,8],[2,5,8,1,3,7,9,4,6]];
+		var colored = new Array(9);
+		
+		function eachNum(nu){
+		var rep;
+		switch(nu){
+		case 1:
+		var one =[2,4];
+		 rep = one[Math.floor(Math.random() * 2)]; break;
+		case 2:
+		var two =[1,3,5];
+		rep = two[Math.floor(Math.random() * 3)]; break;
+		case 3:
+		var three = [2,6];
+		rep = three[Math.floor(Math.random() * 2)]; break;
+		case 4:
+		var four = [1,5,7];
+		rep = four[Math.floor(Math.random() * 3)]; break;
+		case 5:
+		var five = [2,4,6,8];
+		rep = five[Math.floor(Math.random() * 4)]; break;
+		case 6:
+		var six = [3,5,9];
+		rep = six[Math.floor(Math.random() * 3)];break;
+		case 7:
+		var seven = [4,8];
+		rep = seven[Math.floor(Math.random() * 2)];break;
+		case 8:
+		var eight = [7,5,9];
+		rep = eight[Math.floor(Math.random() * 3)];break;
+		case 9:
+		var nine = [6,8];
+		rep = nine[Math.floor(Math.random() * 2)];break;
+		}
+		return rep;
+		}
+		
+		function getDirect(num,nu){
+		
+		switch(num){
+		case 1:
+		
+		 if(nu === 2){
+		 var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="R";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		if(nu===4){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="D";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }	break;
+		case 2:
+		
+		if(nu === 1){
+		 var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="L";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		if(nu===3){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="R";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 if(nu===5){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="D";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 break;
+		case 3:
+		
+		if(nu===2){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="L";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		if(nu===6){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="D";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }		 break;
+		case 4:
+		
+		if(nu===1){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="U";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		if(nu===5){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="R";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }	
+		 if(nu===7){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="D";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }break;
+		case 5:
+		
+		
+       if(nu===2){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="U";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		if(nu===4){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="L";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }	
+		 if(nu===6){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="R";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }		
+		 if(nu===8){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="D";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }break;
+		case 6:
+		
+		
+		if(nu===3){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="U";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 if(nu===5){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="L";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 if(nu===9){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="D";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }break;
+		case 7:
+		var seven = [4,8];
+		
+		if(nu===4){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="U";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 if(nu===8){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="R";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }break;
+		case 8:
+		
+		
+		if(nu===7){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="L";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 if(nu===9){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="R";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 if(nu===5){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="U";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 break;
+		case 9:
+		
+		
+		if(nu===6){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="U";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }
+		 if(nu===9){
+		var rep = document.getElementById("takeDirect").innerHTML;
+		 rep +="L";
+		 document.getElementById("takeDirect").innerHTML=rep;
+		 }break;
+		}
+		
+		}
+		
+		
+		function repl(){
+		var con = [1,2,3,4,5,6,7,8,9];
+		var conn, connn;
+		for(var x=0; x<5;x=x+1){
+		connn = con[0];
+		conn = eachNum(con[0]);
+		for(var i=1; i<9; i=i+1)
+		if(con[i] === conn)
+			con[i]=	connn;
+		con[0] = conn;
+		
+		}
+		return con;
+		}
+		
+		var cnum = repl(); 
+		//var numuse = Math.floor(Math.random() * (30))%5;
+		for(var i=0; i<9; i=i+1){
+		//colored[]=colors[cnum[i]-1];
+		document.getElementById(cnum[i]+""+1+"x").style.background = colors[i];
+		}
+		
+		
+		function test(box){
+		if(box.style.background==="black"){
+		
+		box.className="boxt";
+		var id = parseInt(box.id);
+		chose(id);
+		
+		}
+		else {
+		box.className="box";
+
+		var id = parseInt(box.id);
+		unchose(id);
+		
+			}
+			}
+			
+			
+			function unchose(id){
+			if(document.getElementById((id+1)+"")&&id%3!==0)
+			document.getElementById((id+1)+"").className = "box";
+			
+			if(document.getElementById((id-1)+"")&&(id-1)%3!==0)
+			document.getElementById((id-1)+"").className = "box";
+			if(document.getElementById((id+3)+""))
+			document.getElementById((id+3)+"").className = "box";
+			if(document.getElementById((id-3)+""))
+			document.getElementById((id-3)+"").className = "box";
+			}
+			
+			function chose(id){
+			if(document.getElementById((id+1)+"")&&id%3!==0)
+			document.getElementById((id+1)+"").className = "chose";
+			
+			if(document.getElementById((id-1)+"")&&(id-1)%3!==0)
+			document.getElementById((id-1)+"").className = "chose";
+			if(document.getElementById((id+3)+""))
+			document.getElementById((id+3)+"").className = "chose";
+			if(document.getElementById((id-3)+""))
+			document.getElementById((id-3)+"").className = "chose";
+			}
+			function scan(box){
+			
+			for(var i=1; i<=9; i=i+1){
+			
+			if (document.getElementById(i+"").className==="boxt"&&document.getElementById(i+"").id!==box.id)
+			return [true,document.getElementById(i+""),-1] ;
+			}
+			return [false,document.getElementById("0"),1];
+			}
+			
+			
+function switcheroo(box){
+			if(scan(box)[0]){
+			var x = scan(box)[1].id;
+			
+		if(document.getElementById(x).className==="boxt" && box.className==="chose"){
+		var replace;
+		replace =scan(box)[1].style.background;
+		getDirect(parseInt(x),parseInt(box.id));
+		//alert(document.getElementById("takeDirect").innerHTML);
+		document.getElementById(x).style.background = box.style.background;	
+		
+		box.style.background=replace;
+		
+		document.getElementById(x).className="box";
+		
+		
+		unchose(parseInt(document.getElementById(x).id));
+				
+		var cnt=0;
+			for(var i=1;i<=9;i=i+1){
+			if(document.getElementById(i+"").style.background===document.getElementById((i)+""+1+"x").style.background)
+			cnt = cnt+1;
+			}
+			
+			if(cnt===9){
+			document.getElementById("gotit").innerHTML= "answered well!!!";
+			document.getElementById("directionslab").hidden=false;
+			document.getElementById("directions").hidden=false;
+			document.getElementById("directions").value= document.getElementById("takeDirect").innerHTML;
+			let now = new Date();
+			document.getElementById("dtimelab").hidden=false;
+			document.getElementById("thetime").hidden=false;
+			document.getElementById("thetime").value=((now-before)/1000) +" seconds";
+			}
+		}
+		
+			}
+			else
+			test(box);
+			
+			
+			
+			}
+			
+			
+			function restit(){
+			
+			
+			
+			
+			}
+                               </script>
+    </body>
+</html>
